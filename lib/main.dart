@@ -17,9 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'Todo Flutter',
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomeView(title: 'To-Do List'),
