@@ -28,3 +28,7 @@ const kBlack16Regular = TextStyle(
 
 const kBlack24Bold =
     TextStyle(fontSize: 24.0, color: Colors.black, fontFamily: "Roboto-Bold");
+
+const TODO = "TODO";
+
+const TODOLIST = "TODOLIST";

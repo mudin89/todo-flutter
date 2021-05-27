@@ -1,10 +1,30 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:todo_flutter/utils/app_router.dart';
+import 'package:todo_flutter/utils/database/todo_database.dart';
 import 'package:todo_flutter/utils/locator.dart';
 import 'package:todo_flutter/utils/navigator_service.dart';
 import 'package:todo_flutter/view/home_view.dart';
 
+import 'model/todo.dart';
+
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Directory appDocDir = await getApplicationDocumentsDirectory();
+  String appDocPath = appDocDir.path;
+  Hive..init(appDocPath);
+
+  var box = await Hive.openBox('store');
+  Hive.registerAdapter<Todo>(TodoAdapter());
+
+  // final database =
+  //     await $FloorTodoDatabase.databaseBuilder('todo_database.db').build();
+  // final todoDao = database.todoDao;
+
   setupLocator();
   runApp(MyApp());
 }
