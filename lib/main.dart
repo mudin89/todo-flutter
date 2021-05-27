@@ -12,6 +12,7 @@ import 'package:todo_flutter/view/home_view.dart';
 import 'model/todo.dart';
 
 Future<void> main() async {
+  //starting point of the apps
   WidgetsFlutterBinding.ensureInitialized();
 
   Directory appDocDir = await getApplicationDocumentsDirectory();

@@ -9,6 +9,7 @@ import 'package:todo_flutter/utils/view_states.dart';
 import 'package:todo_flutter/viewmodel/base_model.dart';
 
 class FormsViewModel extends BaseModel {
+  // view model for business logic
   // final TodoDAO _todoDAO = locator<TodoDAO>();
   final DataManager _dataManager = locator<DataManager>();
   final HiveManager _hiveManager = locator<HiveManager>();

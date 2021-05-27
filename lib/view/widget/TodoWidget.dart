@@ -12,6 +12,7 @@ import 'package:todo_flutter/viewmodel/form_viewmodel.dart';
 import 'package:todo_flutter/viewmodel/home_viewmodel.dart';
 
 class TodoCard extends StatelessWidget {
+  // custom widget
   TodoCard({@required this.todo, @required this.index});
 
   final Todo todo;
