@@ -60,12 +60,10 @@ class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
             return ListView.builder(
                 itemCount: todoList.length,
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                      onTap: () {
-                        _navigationService.navigateTo(FormRoute,
-                            arguments: FormArguments(id: index));
-                      },
-                      child: TodoCard(todo: todoList[index]));
+                  return TodoCard(
+                    todo: todoList[index],
+                    index: index,
+                  );
                 });
           }
           return CircularProgressIndicator();
