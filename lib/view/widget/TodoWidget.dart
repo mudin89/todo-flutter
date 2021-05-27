@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:todo_flutter/model/Todo.dart';
+import 'package:todo_flutter/model/todo.dart';
 import 'package:todo_flutter/utils/constants.dart';
+import 'package:todo_flutter/utils/data_manager.dart';
+import 'package:todo_flutter/utils/locator.dart';
 
 class TodoCard extends StatelessWidget {
   TodoCard({@required this.todo});
 
   final Todo todo;
+
+  final DataManager _dataManager = locator<DataManager>();
 
   var titleStyle = TextStyle(
     fontSize: 15,
@@ -20,8 +24,8 @@ class TodoCard extends StatelessWidget {
         child: Column(children: [
           _firstRow(todo.title),
           _secondRow("Second"),
-          _thirdRow(todo.getStartDateAsString(), todo.getEndDateAsString(),
-              todo.getCountDown()),
+          _thirdRow(_dataManager.getStartDate(todo),
+              _dataManager.getEndDate(todo), _dataManager.getCountDown(todo)),
           _fourthRow(todo.isComplete)
         ]),
         margin: EdgeInsets.all(4.0),

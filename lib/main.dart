@@ -1,10 +1,30 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:todo_flutter/utils/app_router.dart';
+import 'package:todo_flutter/utils/database/todo_database.dart';
 import 'package:todo_flutter/utils/locator.dart';
 import 'package:todo_flutter/utils/navigator_service.dart';
 import 'package:todo_flutter/view/home_view.dart';
 
+import 'model/todo.dart';
+
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Directory appDocDir = await getApplicationDocumentsDirectory();
+  String appDocPath = appDocDir.path;
+  Hive..init(appDocPath);
+
+  var box = await Hive.openBox('store');
+  Hive.registerAdapter<Todo>(TodoAdapter());
+
+  // final database =
+  //     await $FloorTodoDatabase.databaseBuilder('todo_database.db').build();
+  // final todoDao = database.todoDao;
+
   setupLocator();
   runApp(MyApp());
 }
@@ -17,9 +37,6 @@ class MyApp extends StatelessWidget {
       title: 'Todo Flutter',
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomeView(title: 'To-Do List'),
