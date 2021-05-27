@@ -10,6 +10,7 @@ import 'package:todo_flutter/utils/navigator_service.dart';
 import 'package:todo_flutter/viewmodel/form_viewmodel.dart';
 
 class FormView extends StatefulWidget {
+  // view for display
   FormView({Key key, this.id}) : super(key: key);
 
   final int id;

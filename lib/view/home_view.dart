@@ -12,6 +12,7 @@ import 'package:todo_flutter/view/widget/TodoWidget.dart';
 import 'package:todo_flutter/viewmodel/home_viewmodel.dart';
 
 class HomeView extends StatefulWidget {
+  // view for display
   HomeView({Key key, this.title}) : super(key: key);
 
   final String title;
